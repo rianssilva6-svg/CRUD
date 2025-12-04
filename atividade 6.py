@@ -28,6 +28,7 @@ class Produto:
 
 
 def adicionar_clientes (lista_cliente):
+    os.system("cls")
     print("=== Adicionar clientes ===")
     nome = input("Digite o nome do cliente: ")
     email = input("Digite o email: ")
@@ -38,6 +39,7 @@ def adicionar_clientes (lista_cliente):
                            telefone=telefone, 
                            endereco=endereco)
     lista_cliente.append(novo_cliente)
+    os.system("cls")
 
 def lista_vazia_cliente(lista_cliente):
     if not lista_cliente:
@@ -54,7 +56,7 @@ def encontrar_cliente(lista_cliente, cliente_buscar):
 def mostrar_todos_clientes (lista_cliente):
     if lista_vazia_cliente (lista_cliente):
         return
-    print("\n==== Lista dos produtos =====")
+    print("\n==== Lista dos clientes =====")
     for cliente in lista_cliente:
         cliente.exibir_dados_clientes()
 
@@ -140,7 +142,7 @@ def mostrar_todos_produtos(lista_produto):
         return
     print("\n==== Lista dos produtos =====")
     for produto in lista_produto:
-        produto.exibir_produto()
+        produto.exibir_produtos()
 
 def atualizar_produto(lista_produto):
     print("===== Atualizar dados do produto =====") 
@@ -184,7 +186,7 @@ def excluir_produto(lista_produto):
         return
     mostrar_todos_produtos(lista_produto)
 
-    produto_buscar = input("\nDigite o nome do aluno que deseja excluir: ")
+    produto_buscar = input("\nDigite o nome do produto que deseja excluir: ")
     produto_remover = encontrar_produto(lista_produto, produto_buscar)
 
     if produto_remover:
@@ -197,7 +199,7 @@ def excluir_produto(lista_produto):
 while True:
 
     print ("""
-           ===== Gerenciador de Clientes e Produtos =====
+===== Gerenciador de Clientes e Produtos =====
            
 1 - Adicionar cliente
 2 - Mostrar clientes
@@ -221,24 +223,52 @@ while True:
     match opcao:
         case 1:
             adicionar_clientes(lista_cliente)
-            print("====Adicionado com sucesso====")
         case 2:
+            os.system("cls")
             mostrar_todos_clientes(lista_cliente)
             time.sleep(5)
+            os.system("cls")
+
         case 3:
+            os.system("cls")
+            print("===== Atualização =====")
             atualizar_cliente(lista_cliente)
+            print("===== Atualizado com sucesso =====")
+            time.sleep(3)
+
         case 4:
+            os.system("cls")
+            print("===== Excluir cliente =====")
             excluir_cliente(lista_cliente)
+            time.sleep(3)
+
         case 5:
+            os.system("cls")
             adicionar_produto(lista_produto)
+            time.sleep (3)
+            os.system("cls")
+
         case 6:
+            os.system("cls")
+            print("===== Produtos =====")
             mostrar_todos_produtos(lista_produto)
+            time.sleep(3)
+            os.system("cls")
+
         case 7:
+            os.system("cls")
             atualizar_produto(lista_produto)
+            os.system("cls")
+
         case 8:
+            os.system("cls")
             excluir_produto(lista_produto)
+            print()
+            os.system("cls")
+
         case 9:
             print("===== Programa finalizado =====")
+            break
         case _:
             print("Opção inválida")                                
 
