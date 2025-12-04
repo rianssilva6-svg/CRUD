@@ -22,9 +22,11 @@ class Aluno:
 
     def exibir_dados(self):
         print(30 * "=")
-        print(f"Nome: {self.nome}\nNascimento: {self.nascimento}\nRA: {self.ra}\nCurso: {self.curso}")
+        print(f"""Nome: {self.nome}\nNascimento: {self.nascimento}
+              \nRA: {self.ra}\nCurso: {self.curso}""")
         print("\n")
-        print(f"Endereço: {self.endereco.logra}\n Numero: {self.endereco.numero}\nCidade: {self.endereco.cidade}\nEstado: {self.endereco.estado}")
+        print(f"""Endereço: {self.endereco.logra}\nNumero: {self.endereco.numero}
+            \nCidade: {self.endereco.cidade}\nEstado: {self.endereco.estado}""")
         print(30 * "=")
 
 def lista_vazia (lista_aluno):
@@ -70,7 +72,7 @@ def atualizar_aluno(lista_aluno):
         return
     
     mostrar_todos_alunos(lista_aluno)
-    print("--- Atualizar dados do cliente ---") 
+    print("--- Atualizar dados do aluno ---") 
     nome_buscar = input("\nDigite o nome do aluno: ")
     aluno_para_atualizar = encontrar_aluno_nome(lista_aluno, nome_buscar)
 
@@ -82,19 +84,19 @@ def atualizar_aluno(lista_aluno):
         novo_nome = input("Novo nome: ")
 
         print(f"\nNascimento atual: {aluno_para_atualizar.nascimento}")
-        novo_nascimento = int(input("Novo nascimento: "))
+        novo_nascimento = input("Novo nascimento: ")
 
         print(f"\nRA atual: {aluno_para_atualizar.ra}")
-        novo_ra = int(input("Novo RA: "))
+        novo_ra = input("Novo RA: ")
 
         print(f"\nCurso atual: {aluno_para_atualizar.curso}")
         novo_curso = input("Novo curso: ")
 
         print(f"\nEndereço atual: {aluno_para_atualizar.endereco.logra}")
-        novo_endereco = (input("Novo bairro: "))
+        novo_endereco = input("Novo bairro: ")
         
         print(f"\nNúmero atual: {aluno_para_atualizar.endereco.numero}")
-        novo_numero = int(input("Novo número: "))
+        novo_numero = input("Novo número: ")
         
         print(f"\nCidade atual: {aluno_para_atualizar.endereco.cidade}")
         nova_cidade = input("Nova Cidade: ")
@@ -110,20 +112,20 @@ def atualizar_aluno(lista_aluno):
         if novo_nascimento:    
             aluno_para_atualizar.nascimento = novo_nascimento
        
-        if novo_nome:
-            aluno_para_atualizar.nome = novo_ra
-        if novo_nascimento:    
-            aluno_para_atualizar.email = novo_curso
+        if novo_ra:
+            aluno_para_atualizar.ra = novo_ra
+        if novo_curso:    
+            aluno_para_atualizar.curso = novo_curso
        
-        if novo_nome:
-            aluno_para_atualizar.nome = novo_endereco
-        if novo_nascimento:    
-            aluno_para_atualizar.email = novo_numero
+        if novo_endereco:
+            aluno_para_atualizar.endereco = novo_endereco
+        if novo_numero:    
+            aluno_para_atualizar.endereco.numero = novo_numero
        
-        if novo_nome:
-            aluno_para_atualizar.nome = nova_cidade
-        if novo_nascimento:    
-            aluno_para_atualizar.email = novo_estado
+        if nova_cidade:
+            aluno_para_atualizar.endereco.cidade = nova_cidade
+        if novo_estado:    
+            aluno_para_atualizar.endereco.estado = novo_estado
        
 
         print(f"\nAluno (a): {nome_buscar} atualizados com sucesso!")
@@ -149,7 +151,8 @@ def excluir_aluno(lista_aluno):
 while True:
 
     print("""
---- Gerenciador de Alunos ---
+===== Gerenciador de Alunos ======
+          
 1 - Adicionar 
 2 - Mostrar todos
 3 - Atualizar
