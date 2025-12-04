@@ -134,7 +134,7 @@ def lista_vazia_produto(lista_produto):
 def encontrar_produto(lista_produto, produto_buscar):
     produto_buscar_lower = produto_buscar.lower()
     for produto in lista_produto:
-        if produto.nome.lower == produto_buscar_lower:
+        if produto.nome.lower() == produto_buscar_lower:
             return produto
 
 def mostrar_todos_produtos(lista_produto):
@@ -245,6 +245,7 @@ while True:
         case 5:
             os.system("cls")
             adicionar_produto(lista_produto)
+            print("===== Produto adicionado =====")
             time.sleep (3)
             os.system("cls")
 
@@ -258,12 +259,13 @@ while True:
         case 7:
             os.system("cls")
             atualizar_produto(lista_produto)
+            time.sleep(3)
             os.system("cls")
 
         case 8:
             os.system("cls")
             excluir_produto(lista_produto)
-            print()
+            time.sleep(3)
             os.system("cls")
 
         case 9:
