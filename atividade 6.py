@@ -15,6 +15,7 @@ class Cliente:
     
     def exibir_dados_clientes(self):
         print(f"Nome do cliente: {self.nome}\nEmail: {self.email}\nTelefone: {self.telefone}\n Endereço: {self.endereco}")
+       
 
 @dataclass
 class Produto:
@@ -39,6 +40,7 @@ def adicionar_clientes (lista_cliente):
                            telefone=telefone, 
                            endereco=endereco)
     lista_cliente.append(novo_cliente)
+
     os.system("cls")
 
 def lista_vazia_cliente(lista_cliente):
@@ -121,8 +123,8 @@ def adicionar_produto(lista_produto):
                            quantidade=quantidade, 
                            lote=lote, 
                            validade=validade)
-    lista_produto.append(novo_produto)    
-
+    lista_produto.append(novo_produto)
+    
 
 def lista_vazia_produto(lista_produto):
     if not lista_produto:
@@ -198,88 +200,92 @@ def excluir_produto(lista_produto):
 
 while True:
 
-    print ("""
-===== Gerenciador de Clientes e Produtos =====
-           
+    print("""
+===== Escolha uma das opções abaixo =====
 1 - Adicionar cliente
-2 - Mostrar clientes
-3 - Atualizar clientes
-4 - Excluir cliente
-5 - Adicionar produto
-6 - Mostrar produto
-7 - atualizar produto
-8 - Excluir produto
-9 - Sair
-           """)
+2 - Adicionar produto
+""")
     
     try:
-        opcao = int(input("Digite uma das opções: "))
+        opcao = int(input("Escolha uma das opções: "))
     except ValueError:
-        print("===== Entrada inválida. =====")
-        time.sleep(3)
-        os.system("cls")
+        print("\nEntrada inválida. Digite um número...")
+        time.sleep (2)
+        os.system("cls || clear")
         continue
-
     match opcao:
         case 1:
-            adicionar_clientes(lista_cliente)
+            print("\n===== Menu Cliente =====")
+            print("""
+1 - Adicionar cliente
+2 - Mostrar todos os clientes
+3 - Atualizar cliente
+4 - Excluir cliente
+0 - Sair do programa
+""")
+            try:
+                opcao_cliente = int(input("Escolha uma das opções: "))
+            except ValueError:
+                print("\nEntrada inválida. Digite um número...")
+                time.sleep (2)
+                os.system("cls || clear")
+                continue
+            match opcao_cliente:
+                case 1:
+                    adicionar_clientes(lista_cliente)
+                case 2:
+                    mostrar_todos_clientes(lista_cliente)
+                case 3:
+                    atualizar_cliente(lista_cliente)
+                case 4:
+                    excluir_cliente(lista_cliente)
+                case 0:
+                    print("\nSaindo do programa...")
+                    time.sleep(2)
+                    os.system("cls || clear")
+                    break
+                case _:
+                    print("\nOpção inválida. Tente novamente.")
+                    time.sleep(2)
+                    os.system("cls || clear") 
         case 2:
-            os.system("cls")
-            mostrar_todos_clientes(lista_cliente)
-            time.sleep(5)
-            os.system("cls")
-
-        case 3:
-            os.system("cls")
-            print("===== Atualização =====")
-            atualizar_cliente(lista_cliente)
-            print("===== Atualizado com sucesso =====")
-            time.sleep(3)
-
-        case 4:
-            os.system("cls")
-            print("===== Excluir cliente =====")
-            excluir_cliente(lista_cliente)
-            time.sleep(3)
-
-        case 5:
-            os.system("cls")
-            adicionar_produto(lista_produto)
-            print("===== Produto adicionado =====")
-            time.sleep (3)
-            os.system("cls")
-
-        case 6:
-            os.system("cls")
-            print("===== Produtos =====")
-            mostrar_todos_produtos(lista_produto)
-            time.sleep(3)
-            os.system("cls")
-
-        case 7:
-            os.system("cls")
-            atualizar_produto(lista_produto)
-            time.sleep(3)
-            os.system("cls")
-
-        case 8:
-            os.system("cls")
-            excluir_produto(lista_produto)
-            time.sleep(3)
-            os.system("cls")
-
-        case 9:
-            print("===== Programa finalizado =====")
-            break
+            print("\n===== Menu Produto =====")
+            print("""
+1 - Adicionar produto
+2 - Mostrar todos os produtos
+3 - Atualizar produto
+4 - Excluir produto
+0 - Sair do programa
+""")
+            try:
+                opcao_produto = int(input("Escolha uma das opções: "))
+            except ValueError:
+                print("\nEntrada inválida. Digite um número...")
+                time.sleep (2)
+                os.system("cls || clear")
+                continue
+            match opcao_produto:
+                case 1:
+                    adicionar_produto(lista_produto)
+                case 2:
+                    mostrar_todos_produtos(lista_produto)
+                case 3:
+                    atualizar_produto(lista_produto)
+                case 4:
+                    excluir_produto(lista_produto)
+                case 0:
+                    print("\nSaindo do programa...")
+                    time.sleep(2)
+                    os.system("cls || clear")
+                    break
+                case _:
+                    print("\nOpção inválida. Tente novamente.")
+                    time.sleep(2)
+                    os.system("cls || clear") 
         case _:
-            print("Opção inválida")                                
-
-     
-
-         
-               
-
-   
+            print("\nOpção inválida. Tente novamente.")
+            time.sleep(2)
+            os.system("cls || clear")
 
 
     
